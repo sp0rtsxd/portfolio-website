@@ -7,6 +7,8 @@ const dev = process.env.NODE_ENV !== "production";
 const nextApp = next({ dev });
 const nextHandler = nextApp.getRequestHandler();
 
+const chatHistory = [];
+
 nextApp.prepare().then(() => {
   const app = express();
   const server = http.createServer(app);
@@ -17,7 +19,19 @@ nextApp.prepare().then(() => {
 
     socket.on("chat message", (msg) => {
       console.log("Message received:", msg);
+      chatHistory.push(msg);
+      if (chatHistory.length > 100) {
+        chatHistory.shift();
+      }
       io.emit("chat message", msg);
+    });
+
+    socket.on("get chat history", () => {
+      const twelveHoursAgo = new Date(Date.now() - 12 * 60 * 60 * 1000);
+      const recentHistory = chatHistory.filter(
+        (msg) => new Date(msg.timestamp) > twelveHoursAgo
+      );
+      socket.emit("chat history", recentHistory);
     });
 
     socket.on("disconnect", () => {

@@ -39,7 +39,7 @@ const Home: NextPage = () => {
         </motion.p>
 
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.5 }}
@@ -50,18 +50,82 @@ const Home: NextPage = () => {
             </h2>
             <p>
               I'm a passionate developer exploring the frontiers of web
-              technology.
+              technology, constantly pushing the boundaries of what's possible
+              in the digital universe.
             </p>
           </div>
           <div className="bg-space-light bg-opacity-10 p-6 rounded-lg">
             <h2 className="text-2xl font-bold mb-4 text-space-accent">
-              My Projects
+              Skills
             </h2>
             <ul className="list-disc list-inside">
-              <li>Stellar Website</li>
-              <li>Galactic App</li>
-              <li>Nebula Database</li>
+              <li>React & Next.js</li>
+              <li>Node.js & Express</li>
+              <li>TypeScript</li>
+              <li>Tailwind CSS</li>
+              <li>Socket.io</li>
             </ul>
+          </div>
+        </motion.div>
+
+        <motion.div
+          className="mb-12"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6, duration: 0.5 }}
+        >
+          <h2 className="text-2xl font-bold mb-4 text-center text-space-accent">
+            Featured Projects
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {["Stellar Website", "Galactic App", "Nebula Database"].map(
+              (project, index) => (
+                <div
+                  key={index}
+                  className="bg-space-light bg-opacity-10 p-6 rounded-lg"
+                >
+                  <h3 className="text-xl font-bold mb-2">{project}</h3>
+                  <p>
+                    A brief description of the {project.toLowerCase()} project
+                    goes here.
+                  </p>
+                </div>
+              )
+            )}
+          </div>
+        </motion.div>
+
+        <motion.div
+          className="mb-12"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.8, duration: 0.5 }}
+        >
+          <h2 className="text-2xl font-bold mb-4 text-center text-space-accent">
+            Contact
+          </h2>
+          <p className="text-center mb-4">
+            Feel free to reach out for collaborations or just a friendly chat.
+          </p>
+          <div className="flex justify-center space-x-4">
+            <a
+              href="#"
+              className="text-space-accent hover:text-space-light transition-colors"
+            >
+              GitHub
+            </a>
+            <a
+              href="#"
+              className="text-space-accent hover:text-space-light transition-colors"
+            >
+              LinkedIn
+            </a>
+            <a
+              href="#"
+              className="text-space-accent hover:text-space-light transition-colors"
+            >
+              Twitter
+            </a>
           </div>
         </motion.div>
 
@@ -69,7 +133,7 @@ const Home: NextPage = () => {
           className="mt-12"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.6, duration: 0.5 }}
+          transition={{ delay: 1, duration: 0.5 }}
         >
           <h2 className="text-2xl font-bold mb-4 text-center text-space-accent">
             Space Chat
